@@ -1,0 +1,58 @@
+<!-- <include href="layout.htm" /> -->
+<h1>Welcome to Home</h1>
+
+<div class="accordion p-3" id="accordionExample">
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+                <div class="row">
+                    <div class="col-6">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                            aria-expanded="true" aria-controls="collapseOne">Student Table
+                        </button>
+                    </div>
+                    <div class="col-6 ">
+                        <a href="<?= $BASEURL. '/addstudent'?>" class="btn btn-primary float-right"  aria-expanded="true" aria-controls="collapseOne">New Student 
+                        </a>
+                    </div>
+                </div>
+            </h5>
+        </div>
+
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample" >
+            <div class="card-body">
+                <table class="table table-striped table-hover table-sm">
+                    <tr>
+                        <th>Student Id</th>
+                        <th>Registration No</th>
+                        <th>Name</th>
+                        <th>E-Mail</th>
+                        <th>Date of Birth</th>
+                        <th>Actions</th>
+                    </tr>
+                    <?php foreach ($students as $std) : ?>
+                    <tr>
+                        <td><?php echo $std['std_id'] ?></td>
+                        <td><?php echo $std['std_regno'] ?></td>
+                        <td><?php echo $std['std_name'] ?></td>
+                        <td><?php echo $std['std_email'] ?></td>
+                        <td><?php echo $std['std_dob'] ?></td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="">
+                                <a href="<?= $BASEURL.'/editstudent/'.$std['std_id'] ?>" class="btn btn-primary"><i class="fas fa-edit    "></i></a>
+                                <a href="<?= $BASEURL.'/deletestudent/'.$std['std_id'] ?>" class="btn btn-danger" onclick="return confirm('Do you want to delete?')"><i class="fas fa-trash-alt    "></i></a>
+
+                            </div>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<pre>
+    <?php print_r($students2); ?>
+</pre>
